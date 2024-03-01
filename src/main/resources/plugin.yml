@@ -1,0 +1,21 @@
+name: SimpleReachThrough
+version: '${project.version}'
+main: simplexity.simplereachthrough.SimpleReachThrough
+api-version: '1.20'
+commands:
+  srreload:
+    permission: reachthrough.reload
+    description: reloads the plugin
+  reachtoggle:
+    permission: reachthrough.toggle
+    description: toggles reach-through abilities
+permissions:
+  reachthrough.reload:
+    description: allows user to reload the plugin
+    default: op
+  reachthrough:
+    description: allows the user to use the plugin
+    default: true
+  reachthrough.toggle:
+    description: allows the user to toggle the plugin's functionality on or off for themselves
+    default: op

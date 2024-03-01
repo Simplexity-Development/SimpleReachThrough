@@ -1,0 +1,18 @@
+#
+#right click pass through
+item-frames:
+  reach-through: true
+  reach-through-empty: false
+signs:
+  reach-through: true
+  reach-through-unwaxed: false
+paintings:
+  reach-through: true
+
+# locale
+plugin-reloaded: "<gold>SimpleReachThrough has been reloaded</gold>"
+reach-through:
+  enabled: "<green>Reach through has been enabled</green>"
+  disabled: "<gray>Reach through is now disabled</gray>"
+only-player: "<red>Sorry, only a player can run this command!</red>"
+
