@@ -11,7 +11,7 @@ public class ConfigHandler {
     
     private boolean itemFramesEnabled, shouldBypassEmptyItemFrames, signsEnabled, shouldBypassUnwaxedSigns,
             paintingsEnabled;
-    private String pluginReload, toggleEnabled, toggleDisabled, onlyPlayer;
+    
     
     private final ArrayList<EntityType> passableEntities = new ArrayList<>();
     
@@ -24,16 +24,13 @@ public class ConfigHandler {
     }
     
     public void reloadConfigValues() {
+        SimpleReachThrough.getInstance().reloadConfig();
         FileConfiguration config = SimpleReachThrough.getInstance().getConfig();
         itemFramesEnabled = config.getBoolean("item-frames.reach-through");
         shouldBypassEmptyItemFrames = config.getBoolean("item-frames.reach-through-empty");
         signsEnabled = config.getBoolean("signs.reach-through");
         shouldBypassUnwaxedSigns = config.getBoolean("signs.reach-through-unwaxed");
         paintingsEnabled = config.getBoolean("paintings.reach-through");
-        pluginReload = config.getString("plugin-reloaded");
-        toggleEnabled = config.getString("reach-through.enabled");
-        toggleDisabled = config.getString("reach-through.disabled");
-        onlyPlayer = config.getString("only-player");
         if (itemFramesEnabled) {
             passableEntities.add(EntityType.ITEM_FRAME);
             passableEntities.add(EntityType.GLOW_ITEM_FRAME);
@@ -66,19 +63,5 @@ public class ConfigHandler {
         return passableEntities;
     }
     
-    public String getPluginReload() {
-        return pluginReload;
-    }
     
-    public String getToggleEnabled() {
-        return toggleEnabled;
-    }
-    
-    public String getToggleDisabled() {
-        return toggleDisabled;
-    }
-    
-    public String getOnlyPlayer() {
-        return onlyPlayer;
-    }
 }

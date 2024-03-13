@@ -14,16 +14,16 @@ public class ReachToggle implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
         if (!(sender instanceof Player player)){
-            sender.sendRichMessage(ConfigHandler.getInstance().getOnlyPlayer());
+            sender.sendRichMessage(LocaleHandler.getInstance().getOnlyPlayer());
             return false;
         }
         PersistentDataContainer playerPDC = player.getPersistentDataContainer();
         boolean currentSetting = playerPDC.getOrDefault(toggleKey, PersistentDataType.BOOLEAN, true);
         playerPDC.set(toggleKey, PersistentDataType.BOOLEAN, !currentSetting);
         if (!currentSetting) {
-            player.sendRichMessage(ConfigHandler.getInstance().getToggleEnabled());
+            player.sendRichMessage(LocaleHandler.getInstance().getToggleEnabled());
         } else {
-            player.sendRichMessage(ConfigHandler.getInstance().getToggleDisabled());
+            player.sendRichMessage(LocaleHandler.getInstance().getToggleDisabled());
         }
         return true;
     }

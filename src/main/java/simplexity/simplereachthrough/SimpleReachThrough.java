@@ -11,6 +11,7 @@ public final class SimpleReachThrough extends JavaPlugin {
         instance = this;
         saveDefaultConfig();
         ConfigHandler.getInstance().reloadConfigValues();
+        LocaleHandler.getInstance().loadLocale();
         this.getServer().getPluginManager().registerEvents(new InteractionListener(), this);
         this.getCommand("srreload").setExecutor(new SRReload());
         this.getCommand("reachtoggle").setExecutor(new ReachToggle());

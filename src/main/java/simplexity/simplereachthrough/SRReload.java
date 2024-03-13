@@ -9,9 +9,9 @@ public class SRReload implements CommandExecutor {
     
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String s, @NotNull String[] args) {
-        SimpleReachThrough.getInstance().reloadConfig();
         ConfigHandler.getInstance().reloadConfigValues();
-        sender.sendRichMessage(ConfigHandler.getInstance().getPluginReload());
+        LocaleHandler.getInstance().loadLocale();
+        sender.sendRichMessage(LocaleHandler.getInstance().getPluginReload());
         return false;
     }
 }
