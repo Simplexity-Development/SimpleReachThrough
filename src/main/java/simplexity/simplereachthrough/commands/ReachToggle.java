@@ -1,4 +1,4 @@
-package simplexity.simplereachthrough;
+package simplexity.simplereachthrough.commands;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.jetbrains.annotations.NotNull;
+import simplexity.simplereachthrough.config.LocaleHandler;
+import simplexity.simplereachthrough.SimpleReachThrough;
 
 public class ReachToggle implements CommandExecutor {
     public static final NamespacedKey toggleKey =  new NamespacedKey(SimpleReachThrough.getInstance(), "toggle");

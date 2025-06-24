@@ -1,4 +1,4 @@
-package simplexity.simplereachthrough;
+package simplexity.simplereachthrough.listeners;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -21,13 +21,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.material.Attachable;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import simplexity.simplereachthrough.commands.ReachToggle;
+import simplexity.simplereachthrough.config.ConfigHandler;
 
 import java.util.ArrayList;
 
 public class InteractionListener implements Listener {
-    
+
     private final ArrayList<EntityType> bypassList = ConfigHandler.getInstance().getEntityList();
-    
+
     @EventHandler
     public void onEntityInteract(PlayerInteractEntityEvent interactEntityEvent) {
         Player player = interactEntityEvent.getPlayer();
@@ -50,7 +52,7 @@ public class InteractionListener implements Listener {
         interactEntityEvent.setCancelled(true);
         player.openInventory(containerInv);
     }
-    
+
     @EventHandler
     public void onInteractEvent(PlayerInteractEvent interactEvent) {
         Player player = interactEvent.getPlayer();
@@ -69,7 +71,7 @@ public class InteractionListener implements Listener {
         interactEvent.setCancelled(true);
         player.openInventory(inventoryClicked);
     }
-    
+
     private Inventory getContainerInventory(Attachable attachableBlock, Entity entityClicked) {
         Location entityLocation = entityClicked.getLocation().toBlockLocation();
         BlockFace face = attachableBlock.getAttachedFace();
@@ -81,7 +83,7 @@ public class InteractionListener implements Listener {
         if (!(blockAtLocation.getState() instanceof Container containerBlock)) return null;
         return containerBlock.getInventory();
     }
-    
+
     private Inventory getContainerInventory(Directional directionalBlock, Block blockClicked) {
         Location blockLocation = blockClicked.getLocation().toBlockLocation();
         BlockFace face = directionalBlock.getFacing().getOppositeFace();
@@ -93,20 +95,20 @@ public class InteractionListener implements Listener {
         if (!(blockAtLocation.getState() instanceof Container containerBlock)) return null;
         return containerBlock.getInventory();
     }
-    
+
     private boolean doesItemFramePassConfigChecks(ItemFrame itemFrame) {
         if (!ConfigHandler.getInstance().isItemFramesEnabled()) return false;
         //todo: fix this when itemstacks change (no longer check for air)
         if (!ConfigHandler.getInstance().isShouldBypassEmptyItemFrames() && itemFrame.getItem().getType().equals(Material.AIR)) return false;
         return true;
     }
-    
+
     private boolean doesSignPassConfigChecks(Sign sign) {
         if (!ConfigHandler.getInstance().isSignsEnabled()) return false;
         if (!ConfigHandler.getInstance().isShouldBypassUnwaxedSigns() && !sign.isWaxed()) return false;
         return true;
     }
-    
+
     private boolean doesPaintingPassConfigChecks() {
         return ConfigHandler.getInstance().isPaintingsEnabled();
     }

@@ -1,28 +1,29 @@
-package simplexity.simplereachthrough;
+package simplexity.simplereachthrough.config;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
+import simplexity.simplereachthrough.SimpleReachThrough;
 
 import java.util.ArrayList;
 
 public class ConfigHandler {
-    
+
     private static ConfigHandler instance;
-    
+
     private boolean itemFramesEnabled, shouldBypassEmptyItemFrames, signsEnabled, shouldBypassUnwaxedSigns,
             paintingsEnabled;
-    
-    
+
+
     private final ArrayList<EntityType> passableEntities = new ArrayList<>();
-    
+
     public ConfigHandler() {
     }
-    
+
     public static ConfigHandler getInstance() {
         if (instance == null) instance = new ConfigHandler();
         return instance;
     }
-    
+
     public void reloadConfigValues() {
         SimpleReachThrough.getInstance().reloadConfig();
         FileConfiguration config = SimpleReachThrough.getInstance().getConfig();
@@ -36,32 +37,32 @@ public class ConfigHandler {
             passableEntities.add(EntityType.GLOW_ITEM_FRAME);
         }
         if (paintingsEnabled) passableEntities.add(EntityType.PAINTING);
-        
+
     }
-    
+
     public boolean isItemFramesEnabled() {
         return itemFramesEnabled;
     }
-    
+
     public boolean isShouldBypassEmptyItemFrames() {
         return shouldBypassEmptyItemFrames;
     }
-    
+
     public boolean isSignsEnabled() {
         return signsEnabled;
     }
-    
+
     public boolean isShouldBypassUnwaxedSigns() {
         return shouldBypassUnwaxedSigns;
     }
-    
+
     public boolean isPaintingsEnabled() {
         return paintingsEnabled;
     }
-    
+
     public ArrayList<EntityType> getEntityList() {
         return passableEntities;
     }
-    
-    
+
+
 }
