@@ -1,5 +1,6 @@
 package simplexity.simplereachthrough;
 
+import me.youhavetrouble.yardwatch.Protection;
 import org.bukkit.plugin.java.JavaPlugin;
 import simplexity.simplereachthrough.commands.ReachToggle;
 import simplexity.simplereachthrough.commands.SRReload;
@@ -24,6 +25,17 @@ public final class SimpleReachThrough extends JavaPlugin {
 
     public static SimpleReachThrough getInstance() {
         return instance;
+    }
+
+    public boolean hasYardWatchProvider() {
+        boolean classExists = false;
+        try {
+            Class.forName("me.youhavetrouble.yardwatch.Protection");
+            classExists = true;
+        } catch (ClassNotFoundException e) {
+            // ignore
+        }
+        return classExists && this.getServer().getServicesManager().isProvidedFor(Protection.class);
     }
 
 }
