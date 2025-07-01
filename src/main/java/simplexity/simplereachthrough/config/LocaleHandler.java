@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 
+@SuppressWarnings("unused")
 public class LocaleHandler {
 
         private static LocaleHandler instance;
